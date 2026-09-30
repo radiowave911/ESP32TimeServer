@@ -1,5 +1,5 @@
 {
-  "idf.currentSetup": "C:\\esp\\v5.5.3\\esp-idf",
+  "idf.currentSetup": "/home/rtstarliper/.espressif/v6.1/esp-idf",
   "idf.buildPathWin": "${workspaceFolder}\\build-esp32p4-rev-1-3",
   "idf.sdkconfigDefaults": [
     "sdkconfig.defaults",
