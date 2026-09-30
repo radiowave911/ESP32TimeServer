@@ -37,7 +37,7 @@ static constexpr int LEDGreenPin = 5;
 static constexpr int LEDRedPin = 6;
 
 // (optional) attached LCD support
-#define LIQUID_CRYSTAL_DISPLAY_ENABLED 1 // 0 = Disabled; 1 = Enabled
+#define LIQUID_CRYSTAL_#if RS485_TIMECODE_ENABLEDDISPLAY_ENABLED 1 // 0 = Disabled; 1 = Enabled
 static constexpr int lcdColumns = 20;
 static constexpr int lcdRows = 4;
 static constexpr bool display24HourFormat = false;        // set to true for 24-hour format, false for 12-hour format
@@ -96,7 +96,13 @@ static constexpr int MQTT_QOS = 0;
 //   flash ram is not used so as to not degrade it over time.
 //
 //   However, if TF is present and supports read/write operations then report queuing will be done using the TF card
-//   (an empty 16GB TF card can potentially hold more than 36,000 queued messages) with the number of unique clients set
+//   (an
+
+// (optional) uptime / reset momentary button support
+#define UPTIME_RESTART_BUTTON_ENABLED 1 // 0 = Disabled; 1 = Enabled
+static constexpr unsigned long holdUpTimeRestartButtonForThisManySecondsToTriggerAReset = 10UL;
+static constexpr int upTimeDisplayWillStayActiveForThisManySeconds = 10;
+// GPIO pin definitions for the uptime / reset momentary button empty 16GB TF card can potentially hold more than 36,000 queued messages) with the number of unique clients set
 //   by the value MQTT_TF_Client_Limit below.  Regardless, if queued reports do exceed the TF storage capacity they will
 //   be managed on a FIFO basis.
 //
@@ -136,6 +142,23 @@ static constexpr int PreferIPvX = 4; // 0 - no preference between IPv4 and IPv6
 
 // (required) Time zone setting for your region - for more information see https://gist.github.com/alwynallan/24d96091655391107939
 static constexpr const char *timeZoneSpec = "EST5EDT,M3.2.0/2,M11.1.0/2";
+
+// Optional RS-485 time code output
+#define RS485_TIMECODE_ENABLED 1    // 0 = Disabled; 1 = Enabled
+
+// UART used for the RS-485 transmitter
+#define RS485_UART_NUM                 UART_NUM_2
+
+// Adjust to match your wiring
+#define RS485_TX_PIN                   GPIO_NUM_14
+
+// Not used, but ESP-IDF requires a value
+#define RS485_RX_PIN                   GPIO_NUM_NC
+
+// Time code format:
+// XHHMMSS0000
+//
+#define RS485_BAUD_RATE                9600
 
 // Unless you know what you are doing, the options below should be left as is
 
@@ -200,6 +223,6 @@ static constexpr int PPSPin = 20; // note: prior to release 2.4 pin 18 was used 
 static constexpr int TFCardCommandPin = 44;
 static constexpr int TFCardClockPin = 43;
 static constexpr int TFCardData3Pin = 42;
-static constexpr int TFCardData2Pin = 41;
+static constexpr int TFCardDRS485_TIMECODE_ENABLEData2Pin = 41;
 static constexpr int TFCardData1Pin = 40;
 static constexpr int TFCardData0Pin = 39;

@@ -101,6 +101,9 @@ extern "C"
 #endif
 #include "lwip/inet.h"
 #include "lwip/sockets.h"
+#if RS485_TIMECODE_ENABLED
+#include "RS485TimeCode.h"
+#endif
 }
 
 static const char *TAG = "main_cpp";
@@ -528,6 +531,9 @@ static bool s_lcd_line_cached[lcdRows] = {};
 #define display_line(...)
 #endif
 
+#if RS485_TIMECODE_ENABLED
+RS485TimeCode_Init();
+#endif
 struct PpsCaptureEvent
 {
     int64_t approximate_edge_us;
@@ -3772,6 +3778,10 @@ static void pps_discipline_task(void *parameter)
                     s_ntp_reference_valid = true;
                 }
             }
+
+#if RS485_TIMECODE_ENABLED
+            RS485TimeCode_SendCurrentTime();
+#endif
 
             xSemaphoreGive(s_time_mutex);
         }

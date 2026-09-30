@@ -26,5 +26,6 @@
     "--background-index",
     "--query-driver=**",
     "--compile-commands-dir=e:\\Documents\\GitHub\\ESP32TimeServer\\build-esp32p4-rev-1-3"
-  ]
+  ],
+  "C_Cpp.errorSquiggles": "disabled"
 }
