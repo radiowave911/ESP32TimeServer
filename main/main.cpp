@@ -102,7 +102,7 @@ extern "C"
 #include "lwip/inet.h"
 #include "lwip/sockets.h"
 #if RS485_TIMECODE_ENABLED
-#include "RS485TimeCode.h"
+#include "3rdparty/RS485TimeCode/RS485TimeCode.h"
 #endif
 }
 
