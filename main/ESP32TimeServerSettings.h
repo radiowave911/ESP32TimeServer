@@ -217,6 +217,6 @@ static constexpr int PPSPin = 20; // note: prior to release 2.4 pin 18 was used 
 static constexpr int TFCardCommandPin = 44;
 static constexpr int TFCardClockPin = 43;
 static constexpr int TFCardData3Pin = 42;
-static constexpr int TFCardDRS485_TIMECODE_ENABLEData2Pin = 41;
+static constexpr int TFCardData2Pin = 41;
 static constexpr int TFCardData1Pin = 40;
 static constexpr int TFCardData0Pin = 39;
