@@ -37,7 +37,7 @@ static constexpr int LEDGreenPin = 5;
 static constexpr int LEDRedPin = 6;
 
 // (optional) attached LCD support
-#define LIQUID_CRYSTAL_#if RS485_TIMECODE_ENABLEDDISPLAY_ENABLED 1 // 0 = Disabled; 1 = Enabled
+#define LIQUID_CRYSTAL_
 static constexpr int lcdColumns = 20;
 static constexpr int lcdRows = 4;
 static constexpr bool display24HourFormat = false;        // set to true for 24-hour format, false for 12-hour format
@@ -96,13 +96,7 @@ static constexpr int MQTT_QOS = 0;
 //   flash ram is not used so as to not degrade it over time.
 //
 //   However, if TF is present and supports read/write operations then report queuing will be done using the TF card
-//   (an
-
-// (optional) uptime / reset momentary button support
-#define UPTIME_RESTART_BUTTON_ENABLED 1 // 0 = Disabled; 1 = Enabled
-static constexpr unsigned long holdUpTimeRestartButtonForThisManySecondsToTriggerAReset = 10UL;
-static constexpr int upTimeDisplayWillStayActiveForThisManySeconds = 10;
-// GPIO pin definitions for the uptime / reset momentary button empty 16GB TF card can potentially hold more than 36,000 queued messages) with the number of unique clients set
+//   (an empty 16GB TF card can potentially hold more than 36,000 queued messages) with the number of unique clients set
 //   by the value MQTT_TF_Client_Limit below.  Regardless, if queued reports do exceed the TF storage capacity they will
 //   be managed on a FIFO basis.
 //
