@@ -5,6 +5,7 @@ set(MAIN_SOURCES
         "main.cpp"
         "custom/app_metadata.cpp"
         "custom/ntp_cache.c"
+        "custom/RS485TimeCode.cpp"
 )
 
 set(MAIN_REQUIRES
