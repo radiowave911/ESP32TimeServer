@@ -11,7 +11,7 @@ static const char *TAG = "RS485";
 void RS485TimeCode_Init()
 {
     uart_config_t uart_config = {
-        .baud_rate = RS485_BAUD_RATE,
+        .baud_rate = RS485BaudRate,
         .data_bits = UART_DATA_8_BITS,
         .parity    = UART_PARITY_DISABLE,
         .stop_bits = UART_STOP_BITS_1,
@@ -19,13 +19,13 @@ void RS485TimeCode_Init()
         .source_clk = UART_SCLK_DEFAULT,
     };
 
-    uart_driver_install(RS485_UART_NUM, 0, 0, 0, nullptr, 0);
+    uart_driver_install(RS485UartNum, 0, 0, 0, nullptr, 0);
 
-    uart_param_config(RS485_UART_NUM, &uart_config);
+    uart_param_config(RS485UartNum, &uart_config);
 
     uart_set_pin(
-        RS485_UART_NUM,
-        RS485_TX_PIN,
+        RS485UartNum,
+        RS485TxPin,
         UART_PIN_NO_CHANGE,
         UART_PIN_NO_CHANGE,
         UART_PIN_NO_CHANGE);
@@ -52,7 +52,7 @@ void RS485TimeCode_SendCurrentTime()
         localTime.tm_sec);
 
     uart_write_bytes(
-        RS485_UART_NUM,
+        RS485UartNum,
         buffer,
         strlen(buffer));
 }

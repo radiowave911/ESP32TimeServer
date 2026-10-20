@@ -141,12 +141,13 @@ static constexpr const char *timeZoneSpec = "EST5EDT,M3.2.0/2,M11.1.0/2";
 #define RS485_TIMECODE_ENABLED 1    // 0 = Disabled; 1 = Enabled
 
 // UART used for the RS-485 transmitter
-static constexpr uart_port_t RS485_UART_NUM = UART_NUM_2; // UART2 is used for RS-485 time code output
+static constexpr int RS485UartNum = 2; // UART2 is used for RS-485 time code output
 
 // Adjust to match your wiring
-static constexpr int RS485_TX_PIN = 14; // GPIO pin for RS-485 TX
+static constexpr int RS485TxPin = 14; // GPIO pin for RS-485 TX
+static constexpr int RS485RxPin = 15; // GPIO pin for RS-485 RX (not used in this project, but defined for completeness)
 
-static constexpr uint32_t RS485_BAUD_RATE = 9600; // Baud rate for RS-485 time code output
+static constexpr uint32_t RS485BaudRate = 9600; // Baud rate for RS-485 time code output
 
 // Time code format:
 // XHHMMSS0000
