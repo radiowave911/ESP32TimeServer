@@ -532,7 +532,7 @@ static bool s_lcd_line_cached[lcdRows] = {};
 #endif
 
 #if RS485_TIMECODE_ENABLED
-static bool RS485TimeCode_Init()
+static bool RS485TimeCode_Init();
 #endif
 
 struct PpsCaptureEvent
