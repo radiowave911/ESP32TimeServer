@@ -1,5 +1,7 @@
 #include "RS485TimeCode.h"
 #include "ESP32TimeServerSettings.h"
+#include "Arduino.h"
+
 
 #if RS485_TIMECODE_ENABLED
 
@@ -10,25 +12,9 @@ static const char *TAG = "RS485";
 
 void RS485TimeCode_Init()
 {
-    uart_config_t uart_config = {
-        .baud_rate = RS485BaudRate,
-        .data_bits = UART_DATA_8_BITS,
-        .parity    = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-        .source_clk = UART_SCLK_DEFAULT,
-    };
-
-    uart_driver_install(RS485UartNum, 0, 0, 0, nullptr, 0);
-
-    uart_param_config(RS485UartNum, &uart_config);
-
-    uart_set_pin(
-        RS485UartNum,
-        RS485TxPin,
-        UART_PIN_NO_CHANGE,
-        UART_PIN_NO_CHANGE,
-        UART_PIN_NO_CHANGE);
+    static HardwareSerial RS485Serial(RS485UartNum);
+    
+    RS485Serial.begin(RS485BaudRate, SERIAL_8N1, RS485RxPin, RS485TxPin);
 
     ESP_LOGI(TAG, "RS485 Time Code Output Enabled");
 }
@@ -51,10 +37,7 @@ void RS485TimeCode_SendCurrentTime()
         localTime.tm_min,
         localTime.tm_sec);
 
-    uart_write_bytes(
-        RS485UartNum,
-        buffer,
-        strlen(buffer));
+    RS485Serial.write(buffer);
 }
 
 #else
