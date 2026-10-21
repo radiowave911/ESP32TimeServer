@@ -10,10 +10,10 @@
 
 static const char *TAG = "RS485";
 
+static HardwareSerial RS485Serial(RS485UartNum);
+
 void RS485TimeCode_Init()
 {
-    static HardwareSerial RS485Serial(RS485UartNum);
-    
     RS485Serial.begin(RS485BaudRate, SERIAL_8N1, RS485RxPin, RS485TxPin);
 
     ESP_LOGI(TAG, "RS485 Time Code Output Enabled");
