@@ -1,5 +1,7 @@
 #include "RS485TimeCode.h"
 #include "ESP32TimeServerSettings.h"
+#include "Arduino.h"
+#include "HardwareSerial.h"
 
 #if RS485_TIMECODE_ENABLED
 
