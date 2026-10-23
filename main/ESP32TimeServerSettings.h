@@ -15,7 +15,7 @@
 
 // (optional) debug support
 // NOTE: setting DEBUG_ENABLED to 1 (Enabled) will degrade accuracy and performance during periods of high volume ntp requests
-#define DEBUG_ENABLED 0 // 0 = Disabled; 1 = Enabled
+#define DEBUG_ENABLED 1 // 0 = Disabled; 1 = Enabled
 static constexpr int serialMonitorSpeed = 115200;
 
 // (optional) KY-016 RGB LED support
