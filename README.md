@@ -2,7 +2,7 @@
 
 An ESP32 NTP Stratum 1 Time Server for your home network
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ---
 
@@ -24,83 +24,53 @@ synchronize to it for highly accurate local time.
 ## What's New
 
 **Version 3**
-- **NTPv4 Symmetric-key authentication** added for Windows 
-  clients using Meinberg and Linux clients using chrony.  For more 
-  information, please see [this document](/misc/symmetric_key_authentication_setup.md).
 
-**Version 2** was a ground-up rewrite which came with a faster, more capable board 
+- **NTPv4 Symmetric-key authentication** added for Windows clients using Meinberg and Linux clients using chrony. For more information, please see [this document](/misc/symmetric_key_authentication_setup.md).
+
+**Version 2** was a ground-up rewrite which came with a faster, more capable board
 support and a long list of accuracy, reliability, and convenience improvements over
 version 1, including:
 
-- **Higher accuracy, lower jitter** — full use of the GPS module's PPS
-  (Pulse Per Second) pin disciplines the clock for sub-millisecond accuracy,
-  with hardware time stamping and RFC 9769-compatible interleaved responses
-  further reducing jitter for both NTPv3 and NTPv4 requests.
-- **Faster, more modern hardware** — built around the WaveShare ESP32-P4-ETH
-  (or the newer ESP32-P4-WIFI6-ETH), a significant step up from the
-  ESP32-WROOM-32/32E used in v1.
-- **Broader GNSS module support** — still works great with the recommended
-  SparkFun MAX-M10S, but also supports lower-cost generic GNSS modules and now
-  has experimental support for the GT-U16, which offers better reception than
-  some competing receivers at the same or higher price points.
-- **Wireless firmware updates** — Over-the-Ethernet OTA updates let you push
-  new firmware directly from VS Code, with on-screen progress shown on the
-  LCD, so you rarely need to plug in a cable after the first flash.
-- **Handles more traffic** — greatly increased throughput and concurrent
-  request handling, so the server keeps up even on busy networks.
-- **IPv6 support** — the server now responds to NTP requests over IPv6 as
-  well as IPv4.
-- **Flexible networking** — set a custom MAC address or a static IP, instead
-  of always relying on the device's default address and DHCP.
-- **Optional LCD support** — a 4x20 LCD screen was required in v1; 
-  in v2 it's entirely optional, along with an optional up time / reset button.
-- **Optional RGB LED support added** — [here](misc/status_indicators.md)
-  is how that is used.
-- **Smart GNSS lock tracking** — improved satellite lock and PPS discipline
-  tracking, with results correctly reported as Stratum 16 (undefined) if lock
-  or discipline is temporarily lost, and automatic recovery once it's
-  restored.
-- **Quick restarts** — GPS module identity and baud rate are saved to
-  non-volatile storage, so the server starts up quickly after the initial
-  setup.
-- **MQTT publishing** — optionally publish time server stats to an MQTT
-  broker, with TF card support for queueing far more messages if the broker
-  connection drops.
-- **Home Assistant integration** — ready-made entity and dashboard setup
-  instructions for pulling time server stats into Home Assistant.
-- **Built-in self-test** — an optional startup health check lets the server
-  verify its own core functionality every time it boots.
-- **Testing tools and guidance** — instructions, tools, and links for
-  measuring jitter, drift, RFC 9769 compliance, memory usage, and server
-  performance under stress.
-- **Updated 3D printed case** — enclosure files refreshed for the new
-  WaveShare ESP32-P4-ETH board.
+- **Higher accuracy, lower jitter** — full use of the GPS module's PPS (Pulse Per Second) pin disciplines the clock for sub-millisecond accuracy, with hardware time stamping and RFC 9769-compatible interleaved responses further reducing jitter for both NTPv3 and NTPv4 requests.
+- **Faster, more modern hardware** — built around the WaveShare ESP32-P4-ETH (or the newer ESP32-P4-WIFI6-ETH), a significant step up from the ESP32-WROOM-32/32E used in v1.
+- **Broader GNSS module support** — still works great with the recommended SparkFun MAX-M10S, but also supports lower-cost generic GNSS modules and now has experimental support for the GT-U16, which offers better reception than some competing receivers at the same or higher price points.
+- **Wireless firmware updates** — Over-the-Ethernet OTA updates let you push new firmware directly from VS Code, with on-screen progress shown on the LCD, so you rarely need to plug in a cable after the first flash.
+- **Handles more traffic** — greatly increased throughput and concurrent request handling, so the server keeps up even on busy networks.
+- **IPv6 support** — the server now responds to NTP requests over IPv6 as well as IPv4.
+- **Flexible networking** — set a custom MAC address or a static IP, instead of always relying on the device's default address and DHCP.
+- **Optional LCD support** — a 4x20 LCD screen was required in v1; in v2 it's entirely optional, along with an optional up time / reset button.
+- **Optional RGB LED support added** — [here](misc/status_indicators.md) is how that is used.
+- **Smart GNSS lock tracking** — improved satellite lock and PPS discipline tracking, with results correctly reported as Stratum 16 (undefined) if lock or discipline is temporarily lost, and automatic recovery once it's restored.
+- **Quick restarts** — GPS module identity and baud rate are saved to non-volatile storage, so the server starts up quickly after the initial setup.
+- **MQTT publishing** — optionally publish time server stats to an MQTT broker, with TF card support for queueing far more messages if the broker connection drops.
+- **Home Assistant integration** — ready-made entity and dashboard setup instructions for pulling time server stats into Home Assistant.
+- **Built-in self-test** — an optional startup health check lets the server verify its own core functionality every time it boots.
+- **Testing tools and guidance** — instructions, tools, and links for measuring jitter, drift, RFC 9769 compliance, memory usage, and server performance under stress.
+- **Updated 3D printed case** — enclosure files refreshed for the new WaveShare ESP32-P4-ETH board.
 
- **Version 1** described in detail [here](https://hackaday.io/project/189309-esp32-ntp-time-server-stratum-1) was built for Arduino / PlatformIO and remains available
- [here](https://github.com/roblatour/ESP32TimeServer/releases/tag/v1.0.0.0).
->
+**Version 1** described in detail [here](https://hackaday.io/project/189309-esp32-ntp-time-server-stratum-1) was built for Arduino / PlatformIO and remains available
+[here](https://github.com/roblatour/ESP32TimeServer/releases/tag/v1.0.0.0).
+
+> 
+
 ([Detailed release history](https://github.com/roblatour/ESP32TimeServer/releases))
 
 ---
 
 ## Hardware
 
-
-
 | Qty | Item                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1   | WaveShare [ESP32-P4-ETH](https://www.waveshare.com/esp32-p4-eth.htm?sku=32086) or [ESP32-P4-WIFI6-ETH](https://www.waveshare.com/esp32-p4-wifi6-poe-eth.htm?sku=32832) development board (with or without optional PoE) <sup>1 2</sup>                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 1   | GPS/GNSS module [Recommended: SparkFun GNSS Receiver Breakout - MAX-M10S (Qwiic)](https://www.sparkfun.com/sparkfun-gnss-receiver-breakout-max-m10s-qwiic.html) <sup>2</sup>. Additionally, experimental support for the [GT U16](https://www.aliexpress.com/item/1005008288311771.html) has been added in version 2.9 - this receiver offers superior reception when coupled with the right antenna (see notes below).  Additionally, while some lower-cost generic modules UBlox compliant receivers are supported, those without a PPS pin are no longer supported.                                                                           |
 | 1   | GPS/GNSS antenna with SMA connector ([SparkFun GPS/GNSS Magnetic Mount Antenna - 3m (SMA)](https://www.sparkfun.com/products/14986)) <sup>2</sup>. Alternatively the GT U16 with an L1/L5 antenna offers superior reception.  However, in my testing I used the [3M SMA W70C](https://www.aliexpress.com/item/1005008421771962.html?spm=a2g0o.order_list.order_list_main.11.7a7f1802GCXbvZ) L1/L2/L5 antenna an [IPEX to SMA adapter](https://www.aliexpress.com/item/1005009047225776.html) and got very good results (I have the antenna bundled with the GT U16 (link above) on order and when I get it and test it I will update this page). |
-| 1   | _(Optional)_ TF Card, formatted as FAT32, if you're using MQTT and want more than four messages queued should broker communications be down) <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| 1   | _(Optional)_ RGB LED (KY-016) ([AliExpress](https://www.aliexpress.com/item/32763280158.html))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 1   | _(Optional)_ 4×20 I²C LCD display with HD44780 controller with PCF8574 I²C backpack ([AliExpress](https://www.aliexpress.com/item/1005006829045609.html)) <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 1   | _(Optional)_ Momentary push button for displaying up time and triggering a reset ([AliExpress](https://www.aliexpress.com/item/1005004066257419.html)) <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| 1   | _(Optional)_ USB C extension cable (with right angle end) ([AliExpress](https://www.aliexpress.com/item/1005006584965187.html)) <sup>2</sup> + two M3*8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 1   | *(Optional)* TF Card, formatted as FAT32, if you're using MQTT and want more than four messages queued should broker communications be down) <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 1   | *(Optional)* RGB LED (KY-016) ([AliExpress](https://www.aliexpress.com/item/32763280158.html))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 1   | *(Optional)* 4×20 I²C LCD display with HD44780 controller with PCF8574 I²C backpack ([AliExpress](https://www.aliexpress.com/item/1005006829045609.html)) <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 1   | *(Optional)* Momentary push button for displaying up time and triggering a reset ([AliExpress](https://www.aliexpress.com/item/1005004066257419.html)) <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 1   | *(Optional)* USB C extension cable (with right angle end) ([AliExpress](https://www.aliexpress.com/item/1005006584965187.html)) <sup>2</sup> + two M3*8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | —   | Miscellaneous: Ethernet cable, female dupont connection wires, small 4" .1" zip ties, solder <sup>2</sup>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | —   | A PoE-capable switch, PoE injector, **or** USB-C power supply and USB-C cable                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-
-
 
 > ⚠️ **WARNING — Do NOT power the ESP32-P4-POE-ETH or the ESP32-P4-WIFI6-POE-ETH
 > via both its USB-C connector and a PoE powered Ethernet cable at the same time.**
@@ -110,20 +80,20 @@ version 1, including:
 
 <sup>1</sup> See notes in the 'What's New in Version 2' section above.
 
-<sup>2</sup> _(Optional)_ there are 3D Printable Case designed for use
+<sup>2</sup> *(Optional)* there are 3D Printable Case designed for use
 with ESP32-P4_ETH and these specific components (for more information see below).
 
-_(Also Optional)_ To cut down on wiring a PCB can be used. One designed
+*(Also Optional)* To cut down on wiring a PCB can be used. One designed
 to work within this project's 3D printed enclosure is available in the
 [`PCB`](./PCB) folder. If your interested, please review the `Readme.md` file in
 that folder for more information.
 
 ### Wiring
 
-#### GPS module → ESP32-P4-ETH _(mandatory)_
+#### GPS module → ESP32-P4-ETH *(mandatory)*
 
 | GPS pin | ESP32-P4-ETH pin |
-| ------- | ---------------- |
+|---------|------------------|
 | GND     | GND              |
 | VCC     | 3V3              |
 | PPS     | GPIO 20          |
@@ -132,23 +102,20 @@ that folder for more information.
 
 **Pro Tip:** (Optionally) Adding a capacitor between the GNSS module's Vcc and GND power pins,
 placed as close as possible to those pins, can improve GNSS power supply stability. Use a
-100nf (aka 0.1μf, aka 104) ceramic capacitor, rated at least 50v, 
+100nf (aka 0.1μf, aka 104) ceramic capacitor, rated at least 50v,
 such as [this one](https://www.aliexpress.com/item/1005004469852680.html).
 
 **Important:**
- 
+
 Some GNSS receivers and breakout boards provide a 3.3v PPS (Pulse-Per-Second) output pin
 while others provide a 5v PPS output pin.
 
 1. Only connect a 3.3v PPS pin to an ESP32 GPIO pin, never connect a 5v PPS pin to an ESP32 GPIO pin
-
 2. For the wire between the ESP32-P4's GPIO pin and the GNSS Receiver's PPS pin
-use as short and as well connect wire as possible; a standard copper Dupont wire
-will be fine assuming its gauge is between 24 AWG and 28 AWG
-
+   use as short and as well connect wire as possible; a standard copper Dupont wire
+   will be fine assuming its gauge is between 24 AWG and 28 AWG
 3. The GNSS GND must be connected to the ESP32 GND
- 
- 
+
 Also of note, the above PPS, TX, and RX pin selections were changed in version 2.4 for better
 forward and backward compatibility between revisions of the ESP32-P4 chip.
 However, if an earlier version of the software has been working fine for you
@@ -156,29 +123,29 @@ then you may be able to use the old pin specifications if you want to avoid
 rewiring your project. Please see the ESP32TimeServerSettings.h file for more
 information.
 
-#### Up time / Reset button → ESP32-P4-ETH _(optional)_
+#### Up time / Reset button → ESP32-P4-ETH *(optional)*
 
 | Button             | ESP32-P4-ETH pin |
-| ------------------ | ---------------- |
+|--------------------|------------------|
 | One terminal       | GND              |
 | The other terminal | GPIO 3           |
 
-
-#### RGB LED (PY-016) _(optional)_
+#### RGB LED (PY-016) *(optional)*
 
 | LCD pin | ESP32-P4-ETH pin |
-| ------- | ---------------- |
+|---------|------------------|
 | GND (*) | GND              |
 | BLUE    | GPIO 4           |
 | GREEN   | GPIO 5           |
 | RED     | GPIO 6           |
-> (*) (optional) adding a 470&Omega; resistor between the GND 
+
+> (*) (optional) adding a 470Ω resistor between the GND
 > pins reduces the brightness of the RBB LED nicely
 
-#### LCD 2004 (HD44780 + PCF8574 I²C backpack) → ESP32-P4-ETH _(optional)_
+#### LCD 2004 (HD44780 + PCF8574 I²C backpack) → ESP32-P4-ETH *(optional)*
 
 | LCD pin | ESP32-P4-ETH pin |
-| ------- | ---------------- |
+|---------|------------------|
 | GND     | GND              |
 | VCC     | 3V3              |
 | SLC/SCL | GPIO 7           |
@@ -206,8 +173,7 @@ can tweak the design to suit your needs.
 
 ### Build and development environment
 
-
-**To build and flash ESP32TimeServer** you will need **Espressif's ESP-IDF v6.1** or above. 
+**To build and flash ESP32TimeServer** you will need **Espressif's ESP-IDF v6.1** or above.
 If you don't already have this software installed, just follow the install instructions
 directly below:
 
@@ -221,19 +187,18 @@ which include these links to get it:
 
 [Installation of ESP-IDF and Tools on macOS](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/macos-setup.html)
 
-
 If you want to further develop the project, Visual Studio Code with the ESP-IDF extension is recommended.
 However, they are not needed to build and flash the project - the instructions for that are below.
 
 Both Visual Studio Code (Community Edition) and the ESP-IDF extension are free to download and use.
 Here is where you can find more information about them and get your copies:
 
-- **[Visual Studio Code](https://code.visualstudio.com/)**
-- **[Espressif ESP-IDF Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=espressif.esp-idf-extension)**
+- [**Visual Studio Code**](https://code.visualstudio.com/)
+- [**Espressif ESP-IDF Extension for VS Code**](https://marketplace.visualstudio.com/items?itemName=espressif.esp-idf-extension)
 
 #### **For Linux users:**
-A kind user of this project has shared more detailed environment setup, build and flash instructions specific to Linux (Debian 13) - these can be found [here](/Linux_specific_setup_instructions.md)
 
+A kind user of this project has shared more detailed environment setup, build and flash instructions specific to Linux (Debian 13) - these can be found [here](/Linux_specific_setup_instructions.md)
 
 ### Dependencies
 
@@ -292,7 +257,7 @@ git submodule update --init --recursive
 All user-configurable settings — GPIO pins, GPS options, LCD options, button
 support, time zone, etc. — are centralized in:
 
-```plaintext
+```
 main/ESP32TimeServerSettings.h
 ```
 
@@ -301,21 +266,21 @@ Edit this file to match your desired hardware setup before building.
 > **Note:** The settings file indicates whether certain features are enabled.
 > These include support for an Uptime/Restart Button, a Liquid Crystal Display,
 > MQTT reporting, and Over the Ethernet Updates. Please also note, that if a
-> Liquid Crystal Display is **not** connected, `LIQUID_CRYSTAL_DISPLAY_ENABLED`
-> **must** be `0` (disabled) or a critical runtime error will occur.
+> Liquid Crystal Display is **not** connected, `LIQUID_CRYSTAL_DISPLAY_ENABLED`**must** be `0` (disabled) or a critical runtime error will occur.
 
 ### Setup Step 3 - Build
 
 Open a Command Prompt, load the ESP-IDF 6.1 environment, and remove any
 existing generated configuration before building. The first build downloads the
 Component Manager dependencies into `managed_components`; this generated folder
-is not part of the repository. 
+is not part of the repository.
 
 Enter the commands below to setup the build environment and build the project:
 
 ```cmd
 call C:\esp\v6.1\esp-idf\export.bat
 ```
+
 ```cmd
 if exist sdkconfig del sdkconfig
 ```
@@ -332,8 +297,8 @@ The output of the above includes chip type and revision number.
 
 Next, use the command below matching your ESP32-P4's chip revision number to build the project:
 
-- For ESP32-P4 chips at revision 3.1 and above (including the 
-  **WaveShare ESP32-P4-WIFI6-POE-ETH and newer WaveShare 
+- For ESP32-P4 chips at revision 3.1 and above (including the
+  **WaveShare ESP32-P4-WIFI6-POE-ETH and newer WaveShare
   ESP32-P4-ETH** development boards):
 
   ```cmd
@@ -344,17 +309,12 @@ Next, use the command below matching your ESP32-P4's chip revision number to bui
   ```cmd
   idf.py -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;config/esp32p4_rev_v3_0.defaults" set-target esp32p4 build
   ```
-- For older ESP32-P4 chips with revisions prior to version 3.0 (including older 
+- For older ESP32-P4 chips with revisions prior to version 3.0 (including older
   **Waveshare ESP32-P4-ETH** development boards):
 
   ```cmd
   idf.py -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;config/esp32p4_rev_pre_v3.defaults" set-target esp32p4 build
   ```
-
-  
-
-
-
 
 ### Setup Step 4 - Flash
 
@@ -392,7 +352,7 @@ Please see [`Setup.md`](Setup.md)
 ## Validating Your Time Server
 
 Once running, and with your Network and System changes setup, you can validate
-accuracy at [https://time.is](https://time.is).
+accuracy at <https://time.is>.
 
 You're also welcome to use this open source software (also developed by me) to
 stress test your time server:
