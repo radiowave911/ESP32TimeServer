@@ -61,6 +61,9 @@
 #include "custom/ntp_auth.h"
 #endif
 #include "custom/ntp_cache.h"
+#if RS485_TIMECODE_ENABLED
+#include "RS485TimeCode.h"
+#endif
 
 extern "C"
 {
@@ -101,9 +104,6 @@ extern "C"
 #endif
 #include "lwip/inet.h"
 #include "lwip/sockets.h"
-#if RS485_TIMECODE_ENABLED
-#include "RS485TimeCode.h"
-#endif
 }
 
 static const char *TAG = "main_cpp";
