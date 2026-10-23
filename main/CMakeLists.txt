@@ -12,6 +12,10 @@ set(MAIN_REQUIRES
         esp_eth
         esp_event
         esp_netif
+        esp_http_server
+        app_update
+        bootloader_support
+        mdns
         esp_hw_support
         esp_timer
         nvs_flash
