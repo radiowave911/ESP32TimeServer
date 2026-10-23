@@ -15,11 +15,11 @@
 
 // (optional) debug support
 // NOTE: setting DEBUG_ENABLED to 1 (Enabled) will degrade accuracy and performance during periods of high volume ntp requests
-#define DEBUG_ENABLED 1 // 0 = Disabled; 1 = Enabled
+#define DEBUG_ENABLED 0 // 0 = Disabled; 1 = Enabled
 static constexpr int serialMonitorSpeed = 115200;
 
 // (optional) KY-016 RGB LED support
-#define RBG_LED_ENABLED 0 // 0 = Disabled; 1 = Enabled
+#define RBG_LED_ENABLED 1 // 0 = Disabled; 1 = Enabled
 
 // The LED colours below may be changed to suit your preferences, but the descriptors should remain unchanged
 // For example: you can change LED_normal to blue but leave the descriptor 'LED_normal' unchanged
@@ -71,10 +71,10 @@ static constexpr uint16_t OTEPort = 3232;
 // Additional detailed related to client activity, memory usage, and historical information can be optionally included
 // When symmetric-key authentication is enabled, MQTT reporting can distinguish between authenticated and unauthenticated requests as well
 // Please also see ESP32TimeServerSettingsSecretes.h for the configuration of the MQTT credentials.
-#define MQTT_ENABLED 1                                     // 0 = Disabled; 1 = Enabled
-#define MQTT_CLIENT_REPORTING_ENABLED 1                    // 0 = Disabled; 1 = Enabled
-#define MQTT_MEMORY_REPORTING_ENABLED 1                    // 0 = Disabled; 1 = Enabled
-#define MQTT_HISTORICAL_REPORTING_ENABLED 1                // 0 = Disabled; 1 = Enabled
+#define MQTT_ENABLED 0                                     // 0 = Disabled; 1 = Enabled
+#define MQTT_CLIENT_REPORTING_ENABLED 0                    // 0 = Disabled; 1 = Enabled
+#define MQTT_MEMORY_REPORTING_ENABLED 0                    // 0 = Disabled; 1 = Enabled
+#define MQTT_HISTORICAL_REPORTING_ENABLED 0                // 0 = Disabled; 1 = Enabled
 #define MQTT_DISTINGUISH_AUTHENTICATED_REPORTING_ENABLED 0 // 0 = Disabled; 1 = Enabled
 
 static constexpr char MQTTServerIPAddress[] = ""; // For example 192.168.1.15

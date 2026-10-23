@@ -14,7 +14,6 @@ static HardwareSerial RS485Serial(RS485UartNum);
 
 void RS485TimeCode_Init()
 {
-    ESP_LOGI(TAG, "RS485 Time Code Init called");
     RS485Serial.begin(RS485BaudRate, SERIAL_8N1, RS485RxPin, RS485TxPin);
 
     ESP_LOGI(TAG, "RS485 Time Code Output Enabled");
@@ -22,7 +21,6 @@ void RS485TimeCode_Init()
 
 void RS485TimeCode_SendCurrentTime()
 {
-    ESP_LOGI(TAG, "RS485 Time Code Serial called");
     time_t now;
     struct tm localTime;
 
