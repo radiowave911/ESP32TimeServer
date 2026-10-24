@@ -531,10 +531,6 @@ static bool s_lcd_line_cached[lcdRows] = {};
 #define display_line(...)
 #endif
 
-#if RS485_TIMECODE_ENABLED
-void RS485TimeCode_Init();
-#endif
-
 struct PpsCaptureEvent
 {
     int64_t approximate_edge_us;
@@ -3780,8 +3776,11 @@ static void pps_discipline_task(void *parameter)
                 }
             }
 
-#if RS485_TIMECODE_ENABLED
-            RS485TimeCode_SendCurrentTime();
+    #if RS485_TIMECODE_ENABLED
+        if(s_open_for_business_message_written.load(std::memory_order_acquire))
+        {
+         RS485TimeCode_SendCurrentTime();
+        }
 #endif
 
             xSemaphoreGive(s_time_mutex);
@@ -7786,6 +7785,10 @@ extern "C" void app_main()
         ESP_LOGE(TAG, "Unable to start NTP transport health monitoring");
 
     perform_health_check();
+
+    #if RS485_TIMECODE_ENABLED
+        RS485TimeCode_Init();
+    #endif
 
     write_open_for_business_messages_to_the_console();
 }
